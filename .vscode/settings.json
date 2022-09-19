@@ -134,5 +134,6 @@
     "windi",
     "windicss",
     "zxcvbn"
-  ]
+  ],
+  "svn.ignoreMissingSvnWarning": true
 }

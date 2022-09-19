@@ -6,6 +6,7 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 import piniaStore from './store';
+import '/@/assets/styles/base.less';
 import './index.css';
 
 // 支持SVG

@@ -10,9 +10,10 @@ axios.defaults.withCredentials = false;
 // axios.defaults.headers.common['token'] =  AUTH_TOKEN
 // 允许跨域
 axios.defaults.headers.post['Access-Control-Allow-Origin-Type'] = '*';
-
+console.log('import.meta.env.BASE_URL ==>', import.meta);
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: import.meta.env.BASE_URL + '',
+  // baseURL: import.meta.env.BASE_URL + '',
+  baseURL: '/api',
   // transformRequest: [
   //   function (data) {
   //     //由于使用的 form-data传数据所以要格式化

@@ -1,16 +1,14 @@
 <script setup lang="ts">
-  import { version } from '../../package.json';
+  import { version } from '../../../package.json';
   import SvgIcon from '/@/components/SvgIcon/index.vue';
   import { useAppStore } from '/@/store/modules/app';
   import { framework } from './data';
-  import Header from '/@/components/Header/index.vue';
 
   const appStore = useAppStore();
   const data = ref(framework);
 </script>
 <template>
   <div class="dark:text-slate-400 dark:bg-slate-900">
-    <Header />
     <main class="max-w-5xl px-4 mx-auto pb-22 sm:px-6 md:px-8 xl:px-12 xl:max-w-6xl">
       <div class="pt-8 pb-7 sm:pb-8 sm:text-center">
         <h1 class="relative mb-4 text-4xl tracking-tight font-blimone sm:text-5xl lg:text-6xl text-slate-900 dark:text-slate-200">

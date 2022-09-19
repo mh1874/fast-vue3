@@ -7,7 +7,6 @@ import { VITE_PORT } from './config/constant';
 function pathResolve(dir: string) {
   return resolve(process.cwd(), '.', dir);
 }
-
 // https://vitejs.dev/config/
 export default ({ command }: ConfigEnv): UserConfig => {
   const isBuild = command === 'build';

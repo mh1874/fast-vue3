@@ -1,15 +1,9 @@
 <template>
   <div class="login-form-wrapper">
-    <div class="login-form-title">欢迎登录Fast-Vue3</div>
-    <div class="login-form-sub-title">一个开箱即用的Vue3+Vite+...模板</div>
+    <div class="login-form-title">供应协同</div>
+    <div class="login-form-sub-title">智慧供应链协同系统...</div>
     <div class="login-form-error-msg">{{ errorMessage }}</div>
-    <el-form
-      ref="ruleFormRef"
-      :model="userFormData"
-      class="login-form"
-      layout="vertical"
-      :rules="rules"
-    >
+    <el-form ref="ruleFormRef" :model="userFormData" class="login-form" layout="vertical" :rules="rules">
       <el-form-item
         field="username"
         :rules="[{ required: true, message: '用户名不能为空' }]"
@@ -61,10 +55,10 @@
     ],
   });
   const handleSubmit = async (formEl: FormInstance | undefined) => {
-    console.log(formEl);
     if (!formEl) return;
     await formEl.validate((valid) => {
       if (valid) {
+        userStore.login(userFormData);
         ElMessage.success('欢迎使用');
         router.push('/');
         userStore.info();

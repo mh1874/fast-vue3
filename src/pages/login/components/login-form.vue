@@ -4,21 +4,11 @@
     <div class="login-form-sub-title">智慧供应链协同系统...</div>
     <div class="login-form-error-msg">{{ errorMessage }}</div>
     <el-form ref="ruleFormRef" :model="userFormData" class="login-form" layout="vertical" :rules="rules">
-      <el-form-item
-        field="username"
-        :rules="[{ required: true, message: '用户名不能为空' }]"
-        :validate-trigger="['change', 'blur']"
-        hide-label
-      >
+      <el-form-item prop="username" :rules="[{ required: true, message: '用户名不能为空' }]" :validate-trigger="['blur']" hide-label>
         <el-input v-model="userFormData.username" placeholder="saodimangseng" />
       </el-form-item>
-      <el-form-item
-        field="password"
-        :rules="[{ required: true, message: '密码不能为空' }]"
-        :validate-trigger="['change', 'blur']"
-        hide-label
-      >
-        <el-input v-model="userFormData.password" placeholder="密码：saodimangseng" allow-clear />
+      <el-form-item prop="password" :rules="[{ required: true, message: '密码不能为空' }]" :validate-trigger="['blur']" hide-label>
+        <el-input type="password" v-model="userFormData.password" placeholder="密码：saodimangseng" allow-clear />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="handleSubmit(ruleFormRef)">登录</el-button>
@@ -31,6 +21,7 @@
 <script lang="ts" setup>
   import { ElMessage, FormInstance, FormRules } from 'element-plus';
   import { useUserStore } from '/@/store';
+  // import { ResResultData } from '/@/api/user/types';
 
   const router = useRouter();
   const errorMessage = ref('');
@@ -56,12 +47,14 @@
   });
   const handleSubmit = async (formEl: FormInstance | undefined) => {
     if (!formEl) return;
-    await formEl.validate((valid) => {
+    await formEl.validate(async (valid) => {
       if (valid) {
-        userStore.login(userFormData);
-        ElMessage.success('欢迎使用');
-        router.push('/');
-        userStore.info();
+        const response: any = await userStore.login(userFormData);
+        if (response.code === 1) {
+          ElMessage.success('欢迎使用');
+          router.push('/');
+          userStore.info();
+        }
       } else {
         ElMessage.error('错误信息');
       }

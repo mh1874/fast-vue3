@@ -1,7 +1,7 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { showMessage } from './status';
 import { IResponse } from './type';
-import { getToken } from '/@/utils/auth';
+import { TokenPrefix, getAccessToken } from '/@/utils/auth';
 
 // 如果请求话费了超过 `timeout` 的时间，请求将被中断
 axios.defaults.timeout = 5000;
@@ -36,8 +36,8 @@ axiosInstance.interceptors.response.use(
     if (response.status === 200) {
       return response;
     }
-    showMessage(response.status);
-    return response;
+    showMessage(response.data.msg);
+    return response.data;
   },
   // 请求失败
   (error: any) => {
@@ -54,9 +54,9 @@ axiosInstance.interceptors.response.use(
 // axios实例拦截请求
 axiosInstance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
-    const token = getToken();
+    const token = getAccessToken();
     if (token) {
-      // config.headers.Authorization = `${TokenPrefix}${token}`
+      config.headers!.Authorization = `${TokenPrefix}${token}`;
     }
     return config;
   },
@@ -70,10 +70,11 @@ const request = <T = any>(config: AxiosRequestConfig): Promise<T> => {
   return new Promise((resolve) => {
     axiosInstance.request<any, AxiosResponse<IResponse>>(conf).then((res: AxiosResponse<IResponse>) => {
       // resolve(res as unknown as Promise<T>);
-      const {
-        data: { result },
-      } = res;
-      resolve(result as T);
+      const { data } = res;
+      if (data?.code !== 1) {
+        showMessage(data.msg);
+      }
+      resolve(data as T);
     });
   });
 };

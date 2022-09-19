@@ -8,7 +8,14 @@ enum URL {
   profile = '/user/profile',
 }
 interface LoginRes {
-  token: string;
+  access_token: string;
+  dept_id_list: number[];
+  name: string;
+  refresh_token: string;
+  role_name_list: string[];
+  user_id: number;
+  user_type: number;
+  username: string;
 }
 
 export interface LoginData {

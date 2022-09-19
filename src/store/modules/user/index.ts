@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { login as userLogin, logout as userLogout, getUserProfile, LoginData } from '/@/api/user/index';
-import { setToken, clearToken } from '/@/utils/auth';
+import { setAccessToken, setRefreshToken, clearToken } from '/@/utils/auth';
 import { UserState } from './types';
 
 export const useUserStore = defineStore('user', {
@@ -45,9 +45,9 @@ export const useUserStore = defineStore('user', {
     // 异步登录并存储token
     async login(loginForm: LoginData) {
       const result = await userLogin(loginForm);
-      const token = result?.token;
-      if (token) {
-        setToken(token);
+      if (result?.data.access_token) {
+        setAccessToken(result?.data.access_token);
+        setRefreshToken(result?.data.refresh_token);
       }
       return result;
     },

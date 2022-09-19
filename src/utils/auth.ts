@@ -1,15 +1,24 @@
-const TokenKey = 'fast-token';
+const accessTokenKey = 'access_token';
+const refreshTokenKey = 'refresh_token';
 const TokenPrefix = 'Bearer ';
+
 const isLogin = () => {
-  return !!localStorage.getItem(TokenKey);
+  return !!localStorage.getItem(accessTokenKey);
 };
-const getToken = () => {
-  return localStorage.getItem(TokenKey);
+const getAccessToken = () => {
+  return localStorage.getItem(accessTokenKey);
 };
-const setToken = (token: string) => {
-  localStorage.setItem(TokenKey, token);
+const getRefreshToken = () => {
+  return localStorage.getItem(refreshTokenKey);
+};
+const setAccessToken = (token: string) => {
+  localStorage.setItem(accessTokenKey, token);
+};
+const setRefreshToken = (token: string) => {
+  localStorage.setItem(refreshTokenKey, token);
 };
 const clearToken = () => {
-  localStorage.removeItem(TokenKey);
+  localStorage.removeItem(accessTokenKey);
+  localStorage.removeItem(refreshTokenKey);
 };
-export { TokenPrefix, isLogin, getToken, setToken, clearToken };
+export { TokenPrefix, isLogin, getAccessToken, getRefreshToken, setAccessToken, setRefreshToken, clearToken };

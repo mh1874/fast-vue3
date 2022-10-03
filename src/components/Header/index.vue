@@ -27,19 +27,22 @@
 </script>
 
 <template>
-  <header class="antialiased bg-white Male text-slate-500 dark:text-slate-400 dark:bg-slate-900">
+  <header class="antialiased bg-white h-full Male text-slate-500 dark:text-slate-400 dark:bg-slate-900">
     <div
-      class="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 dark:border-slate-50/[0.06] bg-white/95 supports-backdrop-blur:bg-white/60 dark:bg-transparent"
+      class="sticky top-0 z-40 h-full w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 dark:border-slate-50/[0.06] bg-white/95 supports-backdrop-blur:bg-white/60 dark:bg-transparent"
     >
-      <div class="mx-auto max-w-8xl">
-        <div class="px-4 py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 dark:border-slate-300/10">
-          <div class="relative flex items-center text-2xl sm:text-2xl font-blimone">
-            <router-link to="/" class="mr-3 flex-none w-[2.0625rem] md:w-auto leading-6 dark:text-slate-200">Fast-Vue3</router-link>
+      <div class="mx-auto max-w-8xl h-full">
+        <div class="border-b border-slate-900/10 lg:px-8 lg:border-0 dark:border-slate-300/10 h-full">
+          <div class="relative h-full flex items-center text-2xl sm:text-2xl font-blimone">
+            <div class="logo-img mx-5"><img src="/@/assets/images/logo.svg" alt="" /></div>
+            <router-link to="/" class="mr-3 flex-none w-[2.0625rem] md:w-auto leading-6 dark:text-slate-200">
+              <span>供应链顾问-供应协同</span>
+            </router-link>
             <div class="relative items-center hidden ml-auto lg:flex">
               <nav class="text-sm font-semibold leading-6 text-slate-700 dark:text-slate-200">
                 <ul class="flex space-x-8">
                   <li>
-                    <router-link to="/demo" class="hover:text-sky-500 dark:hover:text-sky-400">GithubDemo</router-link>
+                    <router-link to="/demo" class="hover:text-sky-500 dark:hover:text-sky-400">Demo</router-link>
                   </li>
                   <li>
                     <router-link to="/login" class="hover:text-sky-500 dark:hover:text-sky-400">Login</router-link>
@@ -75,7 +78,7 @@
   </header>
 </template>
 
-<style lang="less">
+<style lang="less" scoped>
   .prose {
     color: #334155;
     font-size: 0.875em;
@@ -100,6 +103,19 @@
       code {
         color: #e2e8f0;
       }
+    }
+  }
+
+  .logo-img {
+    float: left;
+    padding-left: 10px;
+    box-sizing: border-box;
+    height: 40px;
+    max-width: 175px;
+
+    img {
+      min-width: 40px;
+      max-height: 40px;
     }
   }
 </style>

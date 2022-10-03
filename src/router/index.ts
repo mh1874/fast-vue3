@@ -5,7 +5,7 @@ import 'nprogress/nprogress.css';
 
 const whiteList = ['login'];
 const whiteRoutes = routes.filter((it) => whiteList.includes(it.name));
-const frameRoutes = routes.filter((it) => !whiteList.includes(it.name));
+export const frameRoutes = routes.filter((it) => !whiteList.includes(it.name));
 
 const handledRoutes = [
   {

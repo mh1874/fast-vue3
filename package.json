@@ -1,7 +1,7 @@
 {
-  "name": "fast-vue3",
+  "name": "信息采集系统",
   "version": "0.1.2",
-  "author": "扫地盲僧",
+  "author": "mh1874",
   "scripts": {
     "dev": "vite --mode development",
     "build": "vue-tsc --noEmit && vite build",

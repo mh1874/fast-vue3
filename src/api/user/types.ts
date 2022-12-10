@@ -19,3 +19,29 @@ export interface ResResultData {
   data: any;
   msg: string;
 }
+
+/**
+ * 用户查询参数
+ */
+export interface UserQuery extends PageQuery {
+  keywords: string;
+  status: number;
+  deptId: number;
+}
+
+/**
+ * 用户分页列表项声明
+ */
+export interface UserType {
+  id: string;
+  username: string;
+  nickname: string;
+  mobile: string;
+  gender?: number;
+  avatar: string;
+  email: string | null;
+  status: number;
+  deptName: string | null;
+  roleNames: string | null;
+  createTime: string | null;
+}

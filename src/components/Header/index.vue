@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import SvgIcon from '../SvgIcon/index.vue';
+  // import SvgIcon from '../SvgIcon/index.vue';
   // import { ref } from 'vue'
   import { useDark, useToggle } from '@vueuse/core';
   import { useAppStore } from '/@/store';
@@ -36,14 +36,11 @@
           <div class="relative h-full flex items-center text-2xl sm:text-2xl font-blimone">
             <div class="logo-img mx-5"><img src="/@/assets/images/logo.svg" alt="" /></div>
             <router-link to="/" class="mr-3 flex-none w-[2.0625rem] md:w-auto leading-6 dark:text-slate-200">
-              <span>供应链顾问-供应协同</span>
+              <span>信息采集系统</span>
             </router-link>
             <div class="relative items-center hidden ml-auto lg:flex">
               <nav class="text-sm font-semibold leading-6 text-slate-700 dark:text-slate-200">
                 <ul class="flex space-x-8">
-                  <li>
-                    <router-link to="/demo" class="hover:text-sky-500 dark:hover:text-sky-400">Demo</router-link>
-                  </li>
                   <li>
                     <router-link to="/login" class="hover:text-sky-500 dark:hover:text-sky-400">Login</router-link>
                   </li>
@@ -62,13 +59,6 @@
                     @click="toggleTheme()"
                   />
                 </el-tooltip>
-                <a
-                  href="https://github.com/MaleWeb/fast-vue3"
-                  target="_bank"
-                  class="block ml-6 text-slate-400 hover:text-slate-500 dark:hover:text-slate-300"
-                >
-                  <SvgIcon name="svg-github" size="small" color="#999999" />
-                </a>
               </div>
             </div>
           </div>

@@ -21,15 +21,21 @@
 <script lang="ts" setup>
   import { ElMessage, FormInstance, FormRules } from 'element-plus';
   import { useUserStore } from '/@/store';
+  import { useRoute, useRouter } from 'vue-router';
   // import { ResResultData } from '/@/api/user/types';
 
   const router = useRouter();
+  const route = useRoute();
   const errorMessage = ref('');
   const userStore = useUserStore();
-  const userFormData = reactive({
-    username: 'test',
-    password: 'test',
+  const state = reactive({
+    redirect: '',
+    userFormData: {
+      username: 'test',
+      password: 'test',
+    },
   });
+  const { userFormData } = toRefs(state);
   const ruleFormRef = ref<FormInstance>();
   const rules = reactive<FormRules>({
     username: [
@@ -49,10 +55,10 @@
     if (!formEl) return;
     await formEl.validate(async (valid) => {
       if (valid) {
-        const response: any = await userStore.login(userFormData);
+        const response: any = await userStore.login(state.userFormData);
         if (response.code === 1) {
           ElMessage.success('欢迎使用');
-          router.push('/');
+          router.push({ path: state.redirect || '/' });
           userStore.info();
         }
       } else {
@@ -64,6 +70,18 @@
     if (!formEl) return;
     formEl.resetFields();
   };
+  watch(
+    route,
+    () => {
+      const query = route.query;
+      if (query) {
+        state.redirect = query.redirect as string;
+      }
+    },
+    {
+      immediate: true,
+    },
+  );
 </script>
 
 <style lang="less" scoped>

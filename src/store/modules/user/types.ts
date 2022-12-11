@@ -12,9 +12,6 @@ export interface UserState {
   email?: string;
   auths?: string[];
   is_admin?: number;
-  blogJuejin?: string;
-  blogZhihu?: string;
-  blogGithub?: string;
   profileBio?: string;
   devLanguages?: string;
   role?: RoleType;

@@ -18,9 +18,6 @@ export function createFakeUserList() {
       auths: [],
       is_admin: 1,
       dev_languages: 'JavaScript/Vue/React/Node/PHP',
-      blog_github: 'https://github.com/MaleWeb',
-      blog_juejin: 'https://juejin.cn/user/3016715636842622',
-      blog_zhihu: 'https://www.zhihu.com/people/blind_monk',
       role: 'admin',
     },
     {
@@ -37,9 +34,6 @@ export function createFakeUserList() {
       auths: [],
       is_admin: 0,
       dev_languages: 'JavaScript/Vue/React/Node/PHP',
-      blog_github: 'https://github.com/MaleWeb',
-      blog_juejin: 'https://juejin.cn/user/3016715636842622',
-      blog_zhihu: 'https://www.zhihu.com/people/blind_monk',
       role: 'user',
     },
   ];

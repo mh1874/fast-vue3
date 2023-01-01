@@ -1,14 +1,14 @@
 <template>
   <div class="login-form-wrapper">
-    <div class="login-form-title">供应协同</div>
-    <div class="login-form-sub-title">智慧供应链协同系统...</div>
+    <div class="login-form-title">信息采集系统</div>
+    <div class="login-form-sub-title">用于展示调查问卷收集的信息...</div>
     <div class="login-form-error-msg">{{ errorMessage }}</div>
     <el-form ref="ruleFormRef" :model="userFormData" class="login-form" layout="vertical" :rules="rules">
       <el-form-item prop="username" :rules="[{ required: true, message: '用户名不能为空' }]" :validate-trigger="['blur']" hide-label>
-        <el-input v-model="userFormData.username" placeholder="saodimangseng" />
+        <el-input v-model="userFormData.username" placeholder="用户名" />
       </el-form-item>
       <el-form-item prop="password" :rules="[{ required: true, message: '密码不能为空' }]" :validate-trigger="['blur']" hide-label>
-        <el-input type="password" v-model="userFormData.password" placeholder="密码：saodimangseng" allow-clear />
+        <el-input type="password" v-model="userFormData.password" placeholder="密码" allow-clear />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="handleSubmit(ruleFormRef)">登录</el-button>

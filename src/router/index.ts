@@ -12,7 +12,7 @@ const handledRoutes = [
   {
     path: '/',
     name: 'Frame',
-    redirect: '/dashboard',
+    redirect: '/user',
     component: () => import('../layout/frame.vue'),
     children: [...frameRoutes],
   },

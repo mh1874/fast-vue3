@@ -24,9 +24,7 @@ export interface ResResultData {
  * 用户查询参数
  */
 export interface UserQuery extends PageQuery {
-  keywords: string;
-  status: number;
-  deptId: number;
+  searchValue: string;
 }
 
 /**
@@ -34,14 +32,12 @@ export interface UserQuery extends PageQuery {
  */
 export interface UserType {
   id: string;
-  username: string;
-  nickname: string;
-  mobile: string;
-  gender?: number;
-  avatar: string;
-  email: string | null;
-  status: number;
-  deptName: string | null;
-  roleNames: string | null;
-  createTime: string | null;
+  name: string;
+  idCard: string;
+  phoneNumber: string;
+  companyName: string;
+  isLegalPerson: string;
+  city: string;
+  maritalStatus: string;
+  annualIncome: string;
 }

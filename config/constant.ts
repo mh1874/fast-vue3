@@ -10,11 +10,11 @@ export const APP_TITLE = 'Fast-Vue3';
 export const VITE_PORT = 3000;
 
 // prefix
-export const API_PREFIX = '/api';
+export const API_PREFIX = '/record';
 
 // serve
-export const API_BASE_URL = '/api';
-export const API_TARGET_URL = 'https://dev.supply.collaboration.beijing-epoch.com/api';
+export const API_BASE_URL = '/record';
+export const API_TARGET_URL = 'http://39.105.5.251:18000/record';
 
 // mock
 export const MOCK_API_BASE_URL = '/mock/api';

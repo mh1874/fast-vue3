@@ -48,6 +48,30 @@ export const useUserStore = defineStore('user', {
       }
       return result;
     },
+    // 静态判断登录
+    mockLogin(loginForm: LoginData) {
+      const response = {
+        code: 1,
+        data: {
+          access_token: 'test access token',
+          refresh_token: 'test refresh token',
+        },
+        msg: '',
+      };
+      const { username, password } = toRaw(loginForm);
+      if (username === 'liurudong' && password === 'liurudong888') {
+        response.code = 1;
+        response.msg = '登录成功';
+      } else {
+        response.code = 2;
+        response.msg = '账号密码错误';
+      }
+      setAccessToken(response?.data.access_token);
+      setRefreshToken(response?.data.refresh_token);
+      return new Promise((resolve) => {
+        resolve(response);
+      });
+    },
     // Logout
     async logout() {
       await userLogout();

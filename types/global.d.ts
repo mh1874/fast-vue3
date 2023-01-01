@@ -1,7 +1,7 @@
 declare global {
   interface PageQuery {
-    pageNum: number;
-    pageSize: number;
+    page: number;
+    rows: number;
   }
 
   interface PageResult<T> {

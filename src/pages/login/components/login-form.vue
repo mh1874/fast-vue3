@@ -31,8 +31,8 @@
   const state = reactive({
     redirect: '',
     userFormData: {
-      username: 'test',
-      password: 'test',
+      username: '',
+      password: '',
     },
   });
   const { userFormData } = toRefs(state);
@@ -55,11 +55,12 @@
     if (!formEl) return;
     await formEl.validate(async (valid) => {
       if (valid) {
-        const response: any = await userStore.login(state.userFormData);
+        const response: any = await userStore.mockLogin(state.userFormData);
         if (response.code === 1) {
-          ElMessage.success('欢迎使用');
+          ElMessage.success(response.msg);
           router.push({ path: state.redirect || '/' });
-          userStore.info();
+        } else {
+          ElMessage.error(response.msg);
         }
       } else {
         ElMessage.error('错误信息');
